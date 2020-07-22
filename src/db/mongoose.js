@@ -21,8 +21,29 @@ const me = new User({
     name: 'Kacper', age: 21
 })
 
-me.save().then(() => {
-    console.log(me)
-}).catch((error) => {
-    console.log('Error!', error)
+// me.save().then(() => {
+//     console.log(me)
+// }).catch((error) => {
+//     console.log('Error!', error)
+// })
+
+const Task = mongoose.model('Task', {
+    description: {
+        type: String
+    },
+    completed: {
+        type: Boolean
+    }
 })
+
+const sometask = new Task({
+    description: 'Wash the dishes',
+    completed: false
+})
+
+sometask.save().then(() => {
+    console.log(sometask)
+}).catch((error) => {
+    console.log(error)
+})
+
