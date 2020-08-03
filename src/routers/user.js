@@ -1,6 +1,7 @@
 const express = require('express')
 const User = require('../models/user')
 const auth = require('../middleware/auth')
+const multer = require('multer')
 const router = new express.Router()
 
 router.post('/users', async (req, res) => {
@@ -50,6 +51,14 @@ router.post('/users/logoutAll', auth, async (req, res) => {
 
 router.get('/users/me', auth, async (req, res) => {
     res.send(req.user)
+})
+
+const upload = multer({
+    dest: 'avatars'
+})
+
+router.post('/users/me/avatar', upload.single('avatar'), (req, res) => {
+    res.send()
 })
 
 router.patch('/users/me', auth, async (req, res) => {
