@@ -28,7 +28,7 @@ test('Should translate celsius to fahrenheit', () => {
 // })
 
 
-test('Should add two numbers', () => {
+test('Should add two numbers', (done) => {
     add(2, 3).then((sum) => {
         expect(sum).toBe(5)
         done()
